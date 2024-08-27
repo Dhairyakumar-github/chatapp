@@ -8,9 +8,55 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: BorderRadius.circular(50),
+        ),
         child: Row(
-          children: [SvgPicture.asset("assets/svgs/mic.svg")],
+          children: [
+            const SizedBox(
+              width: 5,
+            ),
+            SvgPicture.asset(
+              "assets/svgs/mic.svg",
+              width: 25,
+              color: Colors.white60,
+            ),
+            // const SizedBox(
+            //   width: 5,
+            // ),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                    filled: false,
+                    hintText: "Type message...",
+                    hintStyle: Theme.of(context).textTheme.bodyMedium),
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SvgPicture.asset(
+              "assets/svgs/galary.svg",
+              width: 28,
+              color: Colors.white60,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SvgPicture.asset(
+              "assets/svgs/send.svg",
+              width: 35,
+              color: Colors.white60,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
         ),
       ),
       appBar: AppBar(
@@ -29,7 +75,7 @@ class ChatPage extends StatelessWidget {
         leading: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -52,10 +98,8 @@ class ChatPage extends StatelessWidget {
                 ),
                 Text(
                   "Online",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: const Color.fromARGB(255, 58, 58, 58)),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: const Color.fromARGB(255, 188, 188, 188)),
                 ),
               ],
             ),
@@ -63,9 +107,9 @@ class ChatPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: ListView(children: [
-          Column(
+          const Column(
             children: [
               ChatBubble(
                   message: "eddwiedhidik nwndo wkn jdwo kwdiniwnd",

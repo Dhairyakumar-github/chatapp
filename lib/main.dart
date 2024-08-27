@@ -2,10 +2,16 @@ import 'package:chatapp/Config/theme.dart';
 import 'package:chatapp/Pages/HomePage/HomePage.dart';
 import 'package:chatapp/Pages/welcomepage.dart';
 import 'package:chatapp/Routing/routs.dart';
+import 'package:chatapp/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
