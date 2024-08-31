@@ -1,5 +1,8 @@
 import 'package:chatapp/Config/theme.dart';
+import 'package:chatapp/Controllor/spleshControllor.dart';
+import 'package:chatapp/Pages/AuthPage/authPage.dart';
 import 'package:chatapp/Pages/HomePage/HomePage.dart';
+import 'package:chatapp/Pages/splashScreen.dart';
 import 'package:chatapp/Pages/welcomepage.dart';
 import 'package:chatapp/Routing/routs.dart';
 import 'package:chatapp/firebase_options.dart';
@@ -13,6 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
+  SplashControllor controllor = Get.put(SplashControllor());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +31,9 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: darkTheme,
         darkTheme: darkTheme,
-        home: HomePage()
+        home: SpleshScreen()
+        // AuthPage()
+        // HomePage()
 
         //  WelcomePage(),
         );

@@ -61,9 +61,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCQTqNWVQCKqK71CB2nQvDIibPHEMrQzZk',
-    appId: '1:869156058159:android:79df9e223f5c4d433fc2da',
+    appId: '1:869156058159:android:41429542ee5934b43fc2da',
     messagingSenderId: '869156058159',
     projectId: 'chatapp-c50df',
     storageBucket: 'chatapp-c50df.appspot.com',
   );
+
 }

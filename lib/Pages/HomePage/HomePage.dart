@@ -1,6 +1,7 @@
 import 'package:chatapp/Widgits/ChatList.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController tcontrollor;
+  // ProfileControllor profileControllor = Get.put(ProfileControllor());
   @override
   void initState() {
     // TODO: implement initState
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 30,
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text("WeChat"),
@@ -31,7 +34,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             icon: const Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("/profilepage");
+            },
             icon: const Icon(Icons.more_vert),
           ),
         ],

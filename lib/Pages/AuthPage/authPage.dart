@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AuthPage extends StatelessWidget {
   AuthPage({super.key});
+
 // TabController tabController = TabController(length: 2, vsync: this);
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class AuthPage extends StatelessWidget {
             height: 350,
             width: MediaQuery.of(context).size.width * 0.8,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
+              color: Theme.of(context).colorScheme.onPrimary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -33,6 +34,9 @@ class AuthPage extends StatelessWidget {
                   ),
                   child: Container(
                     child: const TabBar(
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.white54,
+                      // overlayColor: WidgetStatePropertyAll(Colors.white),
                       dividerHeight: 0,
                       labelStyle: TextStyle(
                         fontSize: 20,

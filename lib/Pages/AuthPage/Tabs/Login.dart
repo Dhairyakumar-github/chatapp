@@ -1,3 +1,4 @@
+import 'package:chatapp/Controllor/AuthControllor.dart';
 import 'package:chatapp/Pages/HomePage/HomePage.dart';
 import 'package:chatapp/Widgits/longButton.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,9 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    Authcontrollor authcontrollor = Get.put(Authcontrollor());
     return Container(
       padding: const EdgeInsets.all(8.0),
       // color: Colors.indigoAccent,
@@ -15,9 +19,10 @@ class Login extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Column(
+          Column(
             children: [
               TextField(
+                controller: emailController,
                 textAlignVertical: TextAlignVertical(y: 0.1),
                 decoration: InputDecoration(
                   hintText: "Email",
@@ -28,6 +33,7 @@ class Login extends StatelessWidget {
                 height: 10,
               ),
               TextField(
+                controller: passwordController,
                 textAlignVertical: TextAlignVertical(y: 0.1),
                 decoration: InputDecoration(
                   hintText: "Password",
@@ -38,11 +44,19 @@ class Login extends StatelessWidget {
           ),
           Column(
             children: [
-              GestureDetector(
-                onTap: () => Get.offAllNamed("/home"),
-                child: const LongButton(
-                  text: "Login",
-                ),
+              Obx(
+                () => authcontrollor.isLoading.value
+                    ? CircularProgressIndicator()
+                    : GestureDetector(
+                        onTap: () {
+                          authcontrollor.login(
+                              emailController.text, passwordController.text);
+                          // Get.offAllNamed("/home");
+                        },
+                        child: const LongButton(
+                          text: "Login",
+                        ),
+                      ),
               ),
               const SizedBox(
                 height: 20,
