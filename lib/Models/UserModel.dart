@@ -4,14 +4,21 @@ class Usermodel {
   String? email;
   String? profileImage;
   String? phoneNumber;
+  String? about;
+  String? createdAt;
+  String? lastOnlineStatus;
+  String? status;
 
-  Usermodel({
-    this.email,
-    this.profileImage,
-    this.phoneNumber,
-    this.id,
-    this.name,
-  });
+  Usermodel(
+      {this.email,
+      this.profileImage,
+      this.phoneNumber,
+      this.id,
+      this.name,
+      this.status,
+      this.createdAt,
+      this.lastOnlineStatus,
+      this.about});
 
   factory Usermodel.fromJson(Map<String, dynamic> json) {
     return Usermodel(
@@ -20,6 +27,10 @@ class Usermodel {
       profileImage: json["profile"],
       phoneNumber: json["phoneNumber"],
       id: json["id"],
+      status: json["status"],
+      about: json["about"],
+      createdAt: json["createdAt"],
+      lastOnlineStatus: json["lastOnlineStatus"],
     );
   }
 
@@ -30,6 +41,10 @@ class Usermodel {
       "profileImage": profileImage,
       "phoneNumber": phoneNumber,
       "id": id,
+      "status": status,
+      "about": about,
+      "createdAt": createdAt,
+      "lastOnlineStatus": lastOnlineStatus
     };
   }
 }
