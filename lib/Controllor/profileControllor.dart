@@ -15,15 +15,22 @@ class ProfileControllor extends GetxController {
   Rx<Usermodel> currentUser = Usermodel().obs;
   @override
   void onInit() {
+    print("dmsmodsco dsomcsmocm");
     // TODO: implement onInit
     super.onInit();
     getUserDetails();
   }
 
   Future<void> getUserDetails() async {
-    await db.collection("user").doc(auth.currentUser?.uid).get().then((value) {
-      currentUser.value = Usermodel.fromJson(value.data()!);
-    });
+    try {
+      await db
+          .collection("user")
+          .doc(auth.currentUser?.uid)
+          .get()
+          .then((value) {
+        currentUser.value = Usermodel.fromJson(value.data()!);
+      });
+    } catch (e) {}
   }
 
   Future<void> uploadUserProfile(

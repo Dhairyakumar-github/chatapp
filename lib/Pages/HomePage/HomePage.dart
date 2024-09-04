@@ -1,3 +1,4 @@
+import 'package:chatapp/Controllor/profileControllor.dart';
 import 'package:chatapp/Widgits/ChatList.dart';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  ProfileControllor profileControllor = Get.put(ProfileControllor());
   late TabController tcontrollor;
   // ProfileControllor profileControllor = Get.put(ProfileControllor());
   @override

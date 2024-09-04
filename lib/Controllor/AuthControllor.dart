@@ -33,7 +33,7 @@ class Authcontrollor extends GetxController {
           email: email, password: password);
       await saveUserInfo(email: email, name: name);
       Get.toNamed("/home");
-      print("Account Created successfully 😀😀");
+      // print("Account Created successfully 😀😀");
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
         print("weak-password");

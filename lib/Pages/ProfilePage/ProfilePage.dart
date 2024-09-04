@@ -1,8 +1,7 @@
 import 'dart:io';
-
+import 'package:chatapp/Controllor/AuthControllor.dart';
 import 'package:chatapp/Controllor/ImagePickerControllor.dart';
 import 'package:chatapp/Controllor/profileControllor.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +12,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ImagePickerControllor imagePickerControllor =
         Get.put(ImagePickerControllor());
+    Authcontrollor authcontrollor = Get.put(Authcontrollor());
     ProfileControllor profileControllor = Get.put(ProfileControllor());
     TextEditingController name =
         TextEditingController(text: profileControllor.currentUser.value.name);
@@ -20,13 +20,20 @@ class ProfilePage extends StatelessWidget {
         TextEditingController(text: profileControllor.currentUser.value.email);
     TextEditingController phoneNumber = TextEditingController(
         text: profileControllor.currentUser.value.phoneNumber);
-    TextEditingController about = TextEditingController(
-        text:
-            "John Deo and John Deo from John Deo and John Deo from John Deo and John Deo from John Deo and John Deo from John Deo and John Deo from John Deo");
+    TextEditingController about =
+        TextEditingController(text: profileControllor.currentUser.value.about);
     RxBool isEdit = false.obs;
     RxString imagePath = "".obs;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                authcontrollor.logout();
+                // Get.toNamed("/authpage");
+              },
+              icon: Icon(Icons.logout))
+        ],
         title: const Text("Profile"),
       ),
       body: ListView(
@@ -56,28 +63,46 @@ class ProfilePage extends StatelessWidget {
                           },
                           child: CircleAvatar(
                             radius: 55,
-                            child: imagePath.value == ""
+                            child: profileControllor
+                                            .currentUser.value.profileImage ==
+                                        "" ||
+                                    profileControllor
+                                            .currentUser.value.profileImage ==
+                                        null
                                 ? Icon(Icons.add)
                                 : SizedBox(
                                     width: 110,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(55),
-                                      child: Image.file(
-                                        File(
-                                          imagePath.toString(),
-                                        ),
+                                      child: Image.network(
+                                        profileControllor
+                                            .currentUser.value.profileImage!,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
                           ),
                         )
-                      : GestureDetector(
-                          onTap: () {},
-                          child: const CircleAvatar(
-                            radius: 55,
-                            child: Icon(Icons.image),
-                          ),
+                      : CircleAvatar(
+                          radius: 55,
+                          child: profileControllor
+                                          .currentUser.value.profileImage ==
+                                      "" ||
+                                  profileControllor
+                                          .currentUser.value.profileImage ==
+                                      null
+                              ? Icon(Icons.image)
+                              : SizedBox(
+                                  width: 110,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(55),
+                                    child: Image.network(
+                                      profileControllor
+                                          .currentUser.value.profileImage!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
                         ),
                 ),
                 const SizedBox(

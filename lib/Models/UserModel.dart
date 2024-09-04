@@ -24,7 +24,7 @@ class Usermodel {
     return Usermodel(
       email: json["email"],
       name: json["name"],
-      profileImage: json["profile"],
+      profileImage: json["profileImage"],
       phoneNumber: json["phoneNumber"],
       id: json["id"],
       status: json["status"],
