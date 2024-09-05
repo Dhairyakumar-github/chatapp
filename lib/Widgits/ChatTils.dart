@@ -28,11 +28,16 @@ class ChatTiles extends StatelessWidget {
         children: [
           Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset(
-                  imageUrl,
-                  width: 60,
+              SizedBox(
+                height: 60,
+                width: 60,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.network(
+                    imageUrl,
+                    width: 60,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               SizedBox(

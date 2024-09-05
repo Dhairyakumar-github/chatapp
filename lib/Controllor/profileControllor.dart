@@ -15,7 +15,7 @@ class ProfileControllor extends GetxController {
   Rx<Usermodel> currentUser = Usermodel().obs;
   @override
   void onInit() {
-    print("dmsmodsco dsomcsmocm");
+    // print("dmsmodsco dsomcsmocm");
     // TODO: implement onInit
     super.onInit();
     getUserDetails();
@@ -44,14 +44,18 @@ class ProfileControllor extends GetxController {
       final imageLink = await uploadImageToFirebase(imageurl);
 
       final updatedUser = Usermodel(
+          id: auth.currentUser!.uid,
+          email: auth.currentUser!.email,
           name: name,
           about: about,
           phoneNumber: number,
-          profileImage: imageLink);
+          profileImage:
+              imageurl == "" ? currentUser.value.profileImage : imageLink);
       await db
           .collection("user")
           .doc(auth.currentUser!.uid)
-          .set(updatedUser.toJson());
+          .update(updatedUser.toJson());
+      await getUserDetails();
     } catch (e) {
       print("error eed");
     }

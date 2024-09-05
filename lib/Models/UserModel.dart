@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 class Usermodel {
   String? id;
   String? name;
@@ -26,7 +28,7 @@ class Usermodel {
       name: json["name"],
       profileImage: json["profileImage"],
       phoneNumber: json["phoneNumber"],
-      id: json["id"],
+      id: json["id"] ?? FirebaseAuth.instance.currentUser!.uid,
       status: json["status"],
       about: json["about"],
       createdAt: json["createdAt"],

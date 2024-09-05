@@ -14,7 +14,8 @@ class Chatlist extends StatelessWidget {
             Get.toNamed("/chat");
           },
           child: ChatTiles(
-            imageUrl: "assets/images/logo.png",
+            imageUrl:
+                "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600",
             lastChat: "how are you doing this in a chat list ",
             lastTime: "10:12Pm",
             name: "Dhairya Kumar",
